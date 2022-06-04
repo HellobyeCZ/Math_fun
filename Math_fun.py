@@ -79,9 +79,36 @@ class math_fun:
             
             return Fib[n]
 
+    def Collatz_Conjecture(i):
 
+        "Returns series of numbers following rules 3n+1 theorem after input number."
+
+        l = []
+        l.append(i)
+        if i == 0:
+            return(l)
+        else:
+            while i != 1:
+                
+                if (i%2 == 0):
+                    i = i/2
+                    
+                else:
+                    i = 3 * i + 1
+
+                l.append(i)
+            return(l)
 
 math_fun.BD_paradox_sim(35,2,100)
 math_fun.BD_paradox_calc(35)
 math_fun.Fibonnaci(20)
 math_fun.Fibonnaci_opt(50)
+
+l_list = []
+for i in tqdm(range(40)):
+    l = math_fun.Collatz_Conjecture(i)
+    plt.plot(l)
+    l_list.append(l)
+    #print(i)
+
+plt.show()
